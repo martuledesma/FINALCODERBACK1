@@ -1,16 +1,5 @@
 <section class="detail">
   <div class="detail-gallery">
-    <div class="thumb-stack">
-      {{#if product.thumbnails.[0]}}
-        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
-        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
-        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
-      {{else}}
-        <div class="image-placeholder">Kitana</div>
-        <div class="image-placeholder">Kitana</div>
-        <div class="image-placeholder">Kitana</div>
-      {{/if}}
-    </div>
     {{#if product.thumbnails.[0]}}
       <img class="main-product-image" src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
     {{else}}
