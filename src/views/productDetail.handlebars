@@ -32,7 +32,8 @@
     <form class="add-cart-form" data-product-id="{{id product._id}}">
       <div class="quantity-stepper" aria-label="Cantidad">
         <button type="button" data-quantity-action="minus">-</button>
-        <input name="quantity" type="number" min="1" value="1" aria-label="Cantidad">
+        <span class="quantity-value" aria-live="polite">1</span>
+        <input name="quantity" type="hidden" value="1">
         <button type="button" data-quantity-action="plus">+</button>
       </div>
       <button class="add-cart-submit" type="submit">Agregar al carrito</button>

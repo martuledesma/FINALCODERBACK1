@@ -1,10 +1,12 @@
 const form = document.querySelector(".add-cart-form");
 const message = document.querySelector("#cart-message");
 const quantityInput = form.elements.quantity;
+const quantityValue = form.querySelector(".quantity-value");
 
 const normalizeQuantity = () => {
   const quantity = Math.max(1, Number.parseInt(quantityInput.value, 10) || 1);
   quantityInput.value = quantity;
+  quantityValue.textContent = quantity;
   return quantity;
 };
 
@@ -19,8 +21,6 @@ form.querySelectorAll("[data-quantity-action]").forEach((button) => {
     quantityInput.value = nextQuantity;
   });
 });
-
-quantityInput.addEventListener("change", normalizeQuantity);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
