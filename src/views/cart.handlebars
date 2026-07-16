@@ -1,0 +1,21 @@
+<section class="page-heading">
+  <p class="eyebrow">Carrito</p>
+  <h1>{{id cart._id}}</h1>
+</section>
+
+<section class="cart-list">
+  {{#each cart.products}}
+    <article class="cart-item">
+      <div>
+        <h2>{{product.title}}</h2>
+        <p>{{product.category}} | Cantidad: {{quantity}}</p>
+      </div>
+      <strong>${{formatPrice (multiply quantity product.price)}}</strong>
+    </article>
+  {{/each}}
+</section>
+
+<section class="cart-total">
+  <span>Total</span>
+  <strong>${{formatPrice total}}</strong>
+</section>

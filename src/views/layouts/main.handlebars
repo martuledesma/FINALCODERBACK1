@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/products">Kitana</a>
+      <nav class="nav nav-right">
+        <a href="/products?query=vestidos">Nueva coleccion</a>
+        <a class="nav-icon-link icon-only" href="/products?sort=asc" title="Buscar" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m16.5 16.5 4 4"></path>
+          </svg>
+        </a>
+        <a class="nav-icon-link icon-only" href="/products" title="Carrito" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 7h14l-1.5 9h-11L6 7Z"></path>
+            <path d="M6 7 5.2 4H3"></path>
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="17" cy="20" r="1"></circle>
+          </svg>
+        </a>
+        <a class="nav-icon-link icon-only" href="/realtimeproducts" title="Admin" aria-label="Admin">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 21c1.5-4 4.2-6 8-6s6.5 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+    </header>
+    <main class="main">
+      {{{body}}}
+    </main>
+    <footer class="site-footer">
+      <section class="newsletter">
+        <h2>Suscribite para enterarte primero de novedades y lanzamientos.</h2>
+        <form>
+          <input type="email" placeholder="E-mail">
+          <button type="button">Enviar</button>
+        </form>
+      </section>
+      <section class="footer-links">
+        <nav>
+          <a href="/products?query=remeras">Remeras</a>
+          <a href="/products?query=pantalones">Pantalones</a>
+          <a href="/products?query=vestidos">Vestidos</a>
+          <a href="/products?query=accesorios">Accesorios</a>
+          <a href="/realtimeproducts">Tiempo real</a>
+        </nav>
+        <nav>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">WhatsApp</a>
+        </nav>
+      </section>
+      <section class="footer-brand">
+        <strong>Premium online-shop</strong>
+        <span>Kitana 2026</span>
+      </section>
+    </footer>
+  </body>
+</html>

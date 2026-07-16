@@ -1,0 +1,100 @@
+<section class="page-heading">
+  <p class="eyebrow">Panel privado</p>
+  <h1>Admin Kitana</h1>
+  <p>Gestion de catalogo: crear, editar, activar stock visual y borrar prendas en tiempo real.</p>
+</section>
+
+<section class="admin-layout">
+  <form class="product-form admin-panel" id="product-form">
+    <div class="admin-panel-heading">
+      <div>
+        <span class="eyebrow">Producto</span>
+        <h2 id="form-title">Nueva prenda</h2>
+      </div>
+      <button class="icon-button ghost hidden" type="button" id="cancel-edit" title="Cancelar edicion">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <input name="title" placeholder="Nombre de la prenda" required>
+    <textarea name="description" placeholder="Descripcion corta" required></textarea>
+
+    <div class="form-row">
+      <input name="code" placeholder="Codigo unico" required>
+      <select name="category" required>
+        <option value="">Categoria</option>
+        <option value="tops">Tops</option>
+        <option value="bodys">Bodys</option>
+        <option value="remeras">Remeras</option>
+        <option value="pantalones">Pantalones</option>
+        <option value="vestidos">Vestidos</option>
+        <option value="camperas">Camperas</option>
+        <option value="accesorios">Accesorios</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <input name="price" type="number" placeholder="Precio" min="0" required>
+      <input name="stock" type="number" placeholder="Stock" min="0" required>
+    </div>
+
+    <input name="sizes" placeholder="Talles disponibles: XS, S, M, L">
+    <input name="thumbnails" placeholder="URL de imagen o /images/kitana-top-brown.jpeg">
+
+    <div class="admin-preview">
+      <img id="image-preview" src="/images/kitana-top-brown.jpeg" alt="Vista previa">
+      <div>
+        <span>Imagenes locales disponibles</span>
+        <code>/images/kitana-top-brown.jpeg</code>
+        <code>/images/kitana-body-chic.jpeg</code>
+      </div>
+    </div>
+
+    <label class="checkbox">
+      <input name="status" type="checkbox" checked>
+      Producto visible / disponible
+    </label>
+    <button class="submit-button" type="submit" id="submit-button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      Crear producto
+    </button>
+    <p class="message" id="admin-message"></p>
+  </form>
+
+  <section class="admin-panel">
+    <div class="admin-panel-heading">
+      <div>
+        <span class="eyebrow">Catalogo activo</span>
+        <h2>Prendas cargadas</h2>
+      </div>
+      <span class="admin-count" id="product-count">{{products.length}}</span>
+    </div>
+    <div class="realtime-list" id="products-list">
+      {{#each products}}
+        <article class="realtime-item">
+          {{#if thumbnails.[0]}}
+            <img src="{{thumbnails.[0]}}" alt="{{title}}">
+          {{else}}
+            <div class="mini-placeholder">K</div>
+          {{/if}}
+          <div class="realtime-info">
+            <strong>{{title}}</strong>
+            <span>{{category}} | ${{formatPrice price}} | Stock {{stock}}</span>
+            <small>Talles: {{#each sizes}}{{this}}{{#unless @last}}, {{/unless}}{{else}}Sin talles{{/each}}</small>
+          </div>
+          <div class="admin-actions">
+            <button class="icon-button" data-edit-id="{{id _id}}" title="Editar producto">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"></path><path d="m14 6 4 4"></path></svg>
+            </button>
+            <button class="icon-button danger" data-delete-id="{{id _id}}" title="Eliminar producto">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M6 6l1 14h10l1-14"></path></svg>
+            </button>
+          </div>
+        </article>
+      {{/each}}
+    </div>
+  </section>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtimeProducts.js"></script>

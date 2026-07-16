@@ -1,0 +1,81 @@
+<section class="home-cover">
+  <img src="/images/kitana-top-brown.jpeg" alt="Top marron Kitana">
+  <div class="home-cover-copy">
+    <p class="eyebrow">Nueva coleccion</p>
+    <h1>Body Chic</h1>
+    <a href="/products?query=tops">Ver drop</a>
+  </div>
+</section>
+
+<section class="catalog-hero">
+  <div class="catalog-title">
+    <p class="eyebrow">Kitana collection</p>
+    <h1>LOOK MORE</h1>
+    <a href="/products?sort=desc">Ver prendas</a>
+  </div>
+  <img src="/images/kitana-white-look.jpeg" alt="Look blanco Kitana">
+</section>
+
+<section class="filter-panel" aria-label="Filtros de productos">
+  <div>
+    <span class="filter-label">Filtrar por tipo</span>
+    <nav class="filter-tabs">
+      <a href="/products">Todo</a>
+      <a href="/products?query=tops">Tops</a>
+      <a href="/products?query=bodys">Bodys</a>
+      <a href="/products?query=remeras">Remeras</a>
+      <a href="/products?query=pantalones">Pantalones</a>
+      <a href="/products?query=vestidos">Vestidos</a>
+      <a href="/products?query=accesorios">Accesorios</a>
+    </nav>
+  </div>
+  <div>
+    <span class="filter-label">Ordenar</span>
+    <nav class="filter-tabs filter-sort">
+      <a href="/products?sort=asc">Menor precio</a>
+      <a href="/products?sort=desc">Mayor precio</a>
+    </nav>
+  </div>
+</section>
+
+<section class="grid">
+  {{#each products}}
+    <article class="product-card">
+      {{#if thumbnails.[0]}}
+        <img src="{{thumbnails.[0]}}" alt="{{title}}">
+      {{else}}
+        <div class="image-placeholder">Kitana</div>
+      {{/if}}
+      <div class="card-body">
+        <div>
+          <h2>{{title}}</h2>
+          <strong>${{formatPrice price}}</strong>
+        </div>
+        <div class="swatches" aria-label="Colores disponibles">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="card-actions">
+          <a class="button" href="/products/{{id _id}}">Ver</a>
+          <button class="button add-cart-button" type="button" data-product-id="{{id _id}}">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+    </article>
+  {{/each}}
+</section>
+
+<nav class="pagination">
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Anterior</a>
+  {{/if}}
+  <span>Pagina {{page}} de {{totalPages}}</span>
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Siguiente</a>
+  {{/if}}
+</nav>
+
+<p class="message catalog-message" id="catalog-message"></p>
+
+<script src="/js/products.js"></script>

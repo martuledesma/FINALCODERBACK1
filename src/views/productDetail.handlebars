@@ -1,0 +1,71 @@
+<section class="detail">
+  <div class="detail-gallery">
+    <div class="thumb-stack">
+      {{#if product.thumbnails.[0]}}
+        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
+        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
+        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
+      {{else}}
+        <div class="image-placeholder">Kitana</div>
+        <div class="image-placeholder">Kitana</div>
+        <div class="image-placeholder">Kitana</div>
+      {{/if}}
+    </div>
+    {{#if product.thumbnails.[0]}}
+      <img class="main-product-image" src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
+    {{else}}
+      <div class="image-placeholder main-product-image">Kitana</div>
+    {{/if}}
+  </div>
+
+  <div class="detail-content">
+    <span class="category">{{product.category}}</span>
+    <h1>{{product.title}}</h1>
+    <strong class="price">${{formatPrice product.price}}</strong>
+    <div class="detail-section">
+      <span>Colores</span>
+      <div class="swatches">
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+    <div class="detail-section">
+      <span>Talle</span>
+      <div class="size-grid">
+        {{#each product.sizes}}
+          <button type="button">{{this}}</button>
+        {{else}}
+          <button type="button">Unico</button>
+        {{/each}}
+      </div>
+    </div>
+
+    <form class="add-cart-form" data-product-id="{{id product._id}}">
+      <input name="cartId" placeholder="ID del carrito" required>
+      <button type="submit">Agregar al carrito</button>
+    </form>
+    <p class="message" id="cart-message"></p>
+
+    <div class="accordion-list">
+      <details open>
+        <summary>Caracteristicas</summary>
+        <p>Stock disponible: {{product.stock}} unidades.</p>
+      </details>
+      <details>
+        <summary>Descripcion</summary>
+        <p>{{product.description}}</p>
+      </details>
+      <details>
+        <summary>Cuidado</summary>
+        <p>Lavar con agua fria y secar a la sombra.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="look-more-strip">
+  <h2>LOOK MORE</h2>
+  <a href="/products">Volver al catalogo</a>
+</section>
+
+<script src="/js/productDetail.js"></script>
