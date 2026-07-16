@@ -1,8 +1,10 @@
 import { ProductModel } from "../../models/product.model.js";
 import { AppError } from "../../utils/errors.js";
 
+const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 export class ProductsMongoDAO {
-  async getPaginated({ limit = 10, page = 1, query, sort }) {
+  async getPaginated({ limit = 10, page = 1, query, sort, search }) {
     const filter = {};
 
     if (query) {
@@ -11,6 +13,15 @@ export class ProductsMongoDAO {
       } else {
         filter.category = query;
       }
+    }
+
+    if (search) {
+      const searchRegex = new RegExp(escapeRegex(search), "i");
+      filter.$or = [
+        { title: searchRegex },
+        { description: searchRegex },
+        { category: searchRegex }
+      ];
     }
 
     const sortOption = {};

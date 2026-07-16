@@ -5,8 +5,9 @@ export const renderProducts = async (req, res) => {
   const page = Number.parseInt(req.query.page, 10) || 1;
   const query = req.query.query;
   const sort = req.query.sort;
+  const search = req.query.search;
 
-  const result = await productsDao.getPaginated({ limit, page, query, sort });
+  const result = await productsDao.getPaginated({ limit, page, query, sort, search });
 
   res.render("products", {
     title: "Kitana | Productos",
@@ -18,7 +19,8 @@ export const renderProducts = async (req, res) => {
     prevPage: result.prevPage,
     nextPage: result.nextPage,
     query,
-    sort
+    sort,
+    search
   });
 };
 

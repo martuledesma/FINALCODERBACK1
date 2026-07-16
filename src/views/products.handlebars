@@ -17,6 +17,12 @@
 </section>
 
 <section class="filter-panel" aria-label="Filtros de productos">
+  {{#if search}}
+    <div class="search-result-label">
+      Resultado para: <strong>{{search}}</strong>
+      <a href="/products">Limpiar</a>
+    </div>
+  {{/if}}
   <div>
     <span class="filter-label">Filtrar por tipo</span>
     <nav class="filter-tabs">
@@ -68,11 +74,11 @@
 
 <nav class="pagination">
   {{#if hasPrevPage}}
-    <a href="/products?page={{prevPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Anterior</a>
+    <a href="/products?page={{prevPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}{{#if search}}&search={{search}}{{/if}}">Anterior</a>
   {{/if}}
   <span>Pagina {{page}} de {{totalPages}}</span>
   {{#if hasNextPage}}
-    <a href="/products?page={{nextPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Siguiente</a>
+    <a href="/products?page={{nextPage}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}{{#if search}}&search={{search}}{{/if}}">Siguiente</a>
   {{/if}}
 </nav>
 

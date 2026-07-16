@@ -11,12 +11,12 @@
       <a class="brand" href="/products">Kitana</a>
       <nav class="nav nav-right">
         <a href="/products?query=vestidos">Nueva coleccion</a>
-        <a class="nav-icon-link icon-only" href="/products?sort=asc" title="Buscar" aria-label="Buscar">
+        <button class="nav-icon-link icon-only nav-search-button" type="button" title="Buscar" aria-label="Buscar">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <path d="m16.5 16.5 4 4"></path>
           </svg>
-        </a>
+        </button>
         <a class="nav-icon-link icon-only" id="cart-link" href="/products" title="Carrito" aria-label="Carrito">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 7h14l-1.5 9h-11L6 7Z"></path>
@@ -32,6 +32,10 @@
           </svg>
         </a>
       </nav>
+      <form class="nav-search" id="nav-search" action="/products" method="GET">
+        <input name="search" type="search" placeholder="Buscar prendas, categorias o estilos">
+        <button type="submit">Buscar</button>
+      </form>
     </header>
     <main class="main">
       {{{body}}}
@@ -64,5 +68,6 @@
       </section>
     </footer>
     <script src="/js/cartClient.js"></script>
+    <script src="/js/layout.js"></script>
   </body>
 </html>

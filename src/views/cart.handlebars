@@ -1,16 +1,35 @@
 <section class="page-heading">
   <p class="eyebrow">Carrito</p>
-  <h1>{{id cart._id}}</h1>
+  <h1>Tu seleccion</h1>
+  <p class="cart-id">ID carrito: {{id cart._id}}</p>
 </section>
 
 <section class="cart-list">
   {{#each cart.products}}
-    <article class="cart-item">
+    <article class="cart-item" data-product-id="{{id product._id}}">
+      {{#if product.thumbnails.[0]}}
+        <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}">
+      {{else}}
+        <div class="mini-placeholder">K</div>
+      {{/if}}
       <div>
         <h2>{{product.title}}</h2>
-        <p>{{product.category}} | Cantidad: {{quantity}}</p>
+        <p>{{product.category}} | ${{formatPrice product.price}}</p>
+        <div class="cart-quantity">
+          <button type="button" data-cart-action="minus">-</button>
+          <span>{{quantity}}</span>
+          <button type="button" data-cart-action="plus">+</button>
+        </div>
       </div>
       <strong>${{formatPrice (multiply quantity product.price)}}</strong>
+      <button class="icon-button danger" type="button" data-cart-action="remove" title="Eliminar producto">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M6 6l1 14h10l1-14"></path></svg>
+      </button>
+    </article>
+  {{else}}
+    <article class="cart-empty">
+      <h2>Tu carrito esta vacio</h2>
+      <a href="/products">Ver productos</a>
     </article>
   {{/each}}
 </section>
@@ -19,3 +38,14 @@
   <span>Total</span>
   <strong>${{formatPrice total}}</strong>
 </section>
+
+<section class="checkout-panel">
+  <a href="/products">Seguir comprando</a>
+  <button type="button" id="fake-checkout">Comprar</button>
+  <p class="message" id="cart-message"></p>
+</section>
+
+<script>
+  window.currentCartId = "{{id cart._id}}";
+</script>
+<script src="/js/cartPage.js"></script>

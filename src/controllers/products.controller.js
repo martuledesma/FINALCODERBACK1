@@ -29,7 +29,8 @@ const validatePagination = (req) => {
     limit,
     page,
     query: req.query.query,
-    sort
+    sort,
+    search: req.query.search
   };
 };
 
