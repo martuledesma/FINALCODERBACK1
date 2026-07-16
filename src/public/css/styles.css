@@ -504,8 +504,9 @@ button {
 .add-cart-form {
   display: grid;
   gap: 8px;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 150px 1fr;
   margin: 26px 0 26px;
+  max-width: 560px;
 }
 
 .quantity-stepper {
@@ -555,7 +556,7 @@ button {
   resize: vertical;
 }
 
-.add-cart-form button,
+.add-cart-submit,
 .product-form button,
 .newsletter button,
 .realtime-item button {
@@ -566,6 +567,14 @@ button {
   cursor: pointer;
   min-height: 46px;
   padding: 0 18px;
+}
+
+.quantity-stepper button {
+  background: transparent;
+  border: 0;
+  color: var(--wine);
+  min-height: 44px;
+  padding: 0;
 }
 
 .message {
