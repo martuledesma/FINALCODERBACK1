@@ -503,17 +503,18 @@ button {
 
 .add-cart-form {
   display: grid;
-  gap: 8px;
-  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  grid-template-columns: 1fr;
   margin: 26px 0 26px;
-  max-width: 560px;
+  max-width: 420px;
 }
 
 .quantity-stepper {
   border: 1px solid var(--line);
   display: grid;
-  grid-template-columns: 38px 1fr 38px;
+  grid-template-columns: 52px 1fr 52px;
   min-height: 46px;
+  width: 180px;
 }
 
 .quantity-stepper button {
@@ -567,6 +568,10 @@ button {
   cursor: pointer;
   min-height: 46px;
   padding: 0 18px;
+}
+
+.add-cart-submit {
+  width: 100%;
 }
 
 .quantity-stepper button {
